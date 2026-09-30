@@ -35,26 +35,10 @@
     #vg-header {
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: flex-end;
       padding: 12px 24px;
       border-bottom: 1px solid var(--border);
       flex-shrink: 0;
-      gap: 12px;
-    }
-    #vg-brand { display: flex; flex-direction: column; line-height: 1.1; min-width: 0; }
-    .b-name {
-      font-family: var(--font-serif);
-      font-size: 20px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-    }
-    .b-sub {
-      font-size: 9.5px;
-      font-weight: 500;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      opacity: 0.5;
-      margin-top: 3px;
     }
     #btn-close {
       width: 46px; height: 46px;
@@ -147,19 +131,8 @@
     }
     .vt[aria-pressed="true"] .vt-title { opacity: 1; color: var(--gold); }
 
-    #vg-foot {
-      flex-shrink: 0;
-      text-align: center;
-      font-size: 10px;
-      letter-spacing: 0.06em;
-      color: #F9D59D;
-      padding: 6px 16px 10px;
-      background: var(--bar-bg);
-    }
-
     @media (max-width: 700px) {
       #vg-header { padding: 10px 14px; }
-      .b-name { font-size: 17px; }
       #vg-stage { padding: 0; }
       #vg-player { border-radius: 0; }
       #vg-thumbs { padding: 10px 14px; gap: 10px; }
@@ -174,10 +147,6 @@
 
 <div id="vg-root">
   <header id="vg-header">
-    <div id="vg-brand">
-      <span class="b-name">MAAM</span>
-      <span class="b-sub">Galeria de Vídeos</span>
-    </div>
     <button id="btn-close" title="Fechar" aria-label="Fechar"></button>
   </header>
 
@@ -188,7 +157,6 @@
   <div id="vg-bar">
     <div id="vg-thumbs" role="list"></div>
   </div>
-  <p id="vg-foot">Imagens meramente ilustrativas.</p>
 </div>
 
 <script>
