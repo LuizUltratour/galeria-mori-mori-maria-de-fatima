@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galeria de Vídeos — MAAM</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:            #1c1c1a;
+      --bar-bg:        #141413;
+      --dark:          #F5F1EA;
+      --border:        rgba(255,255,255,0.14);
+      --gold:          #EDD09E;
+      --font-serif:    'Cormorant Garamond', Georgia, serif;
+      --font-sans:     'Inter', system-ui, sans-serif;
+      --ease:          cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    html, body {
+      height: 100%;
+      overflow: hidden;
+      background: var(--bg);
+      color: var(--dark);
+      font-family: var(--font-sans);
+    }
+
+    #vg-root { display: flex; flex-direction: column; height: 100vh; height: 100dvh; }
+
+    /* ── HEADER ── */
+    #vg-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 24px;
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+      gap: 12px;
+    }
+    #vg-brand { display: flex; flex-direction: column; line-height: 1.1; min-width: 0; }
+    .b-name {
+      font-family: var(--font-serif);
+      font-size: 20px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+    .b-sub {
+      font-size: 9.5px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      opacity: 0.5;
+      margin-top: 3px;
+    }
+    #btn-close {
+      width: 46px; height: 46px;
+      border: none;
+      background: url('assets/close-normal-dia.png') center/contain no-repeat transparent;
+      -webkit-appearance: none; appearance: none;
+      cursor: pointer; flex-shrink: 0; padding: 0;
+    }
+    #btn-close:hover { background-image: url('assets/close-hover-dia.png'); }
+
+    /* ── STAGE ── */
+    #vg-stage {
+      flex: 1;
+      min-height: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px 20px;
+    }
+    #vg-player {
+      width: 100%;
+      height: 100%;
+      max-width: 1600px;
+      object-fit: contain;
+      display: block;
+      outline: none;
+      background: #000;
+      border-radius: 4px;
+    }
+
+    /* ── BARRA DE THUMBNAILS ── */
+    #vg-bar {
+      flex-shrink: 0;
+      background: var(--bar-bg);
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: center;
+    }
+    #vg-thumbs {
+      display: flex;
+      gap: 12px;
+      padding: 12px 24px;
+      overflow-x: auto;
+      max-width: 100%;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255,255,255,0.25) transparent;
+    }
+    .vt {
+      flex: 0 0 auto;
+      width: 168px;
+      padding: 0;
+      border: 0;
+      background: none;
+      color: inherit;
+      font-family: inherit;
+      text-align: left;
+      cursor: pointer;
+    }
+    .vt-img {
+      position: relative;
+      display: block;
+      aspect-ratio: 16/9;
+      overflow: hidden;
+      border-radius: 8px;
+      border: 3px solid transparent;
+      background: #2b2a27;
+      opacity: 0.65;
+      transition: opacity 0.2s var(--ease), border-color 0.2s var(--ease), box-shadow 0.2s var(--ease);
+    }
+    .vt-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .vt:hover .vt-img,
+    .vt:focus-visible .vt-img { opacity: 1; border-color: rgba(237,208,158,0.45); }
+    .vt[aria-pressed="true"] .vt-img {
+      opacity: 1;
+      border-color: var(--gold);
+      box-shadow: 0 0 0 1px var(--gold), 0 4px 16px rgba(0,0,0,0.5);
+    }
+    .vt-title {
+      display: block;
+      margin-top: 6px;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      line-height: 1.3;
+      opacity: 0.6;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      transition: opacity 0.2s, color 0.2s;
+    }
+    .vt[aria-pressed="true"] .vt-title { opacity: 1; color: var(--gold); }
+
+    #vg-foot {
+      flex-shrink: 0;
+      text-align: center;
+      font-size: 10px;
+      letter-spacing: 0.06em;
+      color: #F9D59D;
+      padding: 6px 16px 10px;
+      background: var(--bar-bg);
+    }
+
+    @media (max-width: 700px) {
+      #vg-header { padding: 10px 14px; }
+      .b-name { font-size: 17px; }
+      #vg-stage { padding: 0; }
+      #vg-player { border-radius: 0; }
+      #vg-thumbs { padding: 10px 14px; gap: 10px; }
+      .vt { width: 128px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition-duration: 0.001ms !important; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="vg-root">
+  <header id="vg-header">
+    <div id="vg-brand">
+      <span class="b-name">MAAM</span>
+      <span class="b-sub">Galeria de Vídeos</span>
+    </div>
+    <button id="btn-close" title="Fechar" aria-label="Fechar"></button>
+  </header>
+
+  <div id="vg-stage">
+    <video id="vg-player" autoplay playsinline controls preload="auto"></video>
+  </div>
+
+  <div id="vg-bar">
+    <div id="vg-thumbs" role="list"></div>
+  </div>
+  <p id="vg-foot">Imagens meramente ilustrativas.</p>
+</div>
+
+<script>
+// Para adicionar vídeos: coloque o .mp4 em assets/videos/, a miniatura (.jpg)
+// em assets/thumbs/ e inclua uma linha abaixo.
+var VIDEOS = [
+  { title: 'Edifício MAAM — Conceito',    src: 'assets/videos/edificio-maam-conceito.mp4',     thumb: 'assets/thumbs/edificio-maam-conceito.jpg' },
+  { title: 'David & Camilla',             src: 'assets/videos/david-camilla.mp4',              thumb: 'assets/thumbs/david-camilla.jpg' },
+  { title: 'Gianfranco & André Graziano', src: 'assets/videos/gianfranco-andre-graziano.mp4',  thumb: 'assets/thumbs/gianfranco-andre-graziano.jpg' },
+  { title: 'Tânia Ginjas',                src: 'assets/videos/tania-ginjas.mp4',               thumb: 'assets/thumbs/tania-ginjas.jpg' }
+];
+
+var player = document.getElementById('vg-player');
+var thumbs = document.getElementById('vg-thumbs');
+var buttons = [];
+
+function tryPlay() {
+  var p = player.play();
+  if (p && p.catch) p.catch(function () {
+    // autoplay com som bloqueado pelo browser: cai para mudo
+    player.muted = true;
+    player.play().catch(function () {});
+  });
+}
+
+function select(i, autoplay) {
+  buttons.forEach(function (b, j) { b.setAttribute('aria-pressed', j === i ? 'true' : 'false'); });
+  player.src = VIDEOS[i].src;
+  player.load();
+  if (autoplay) tryPlay();
+  buttons[i].scrollIntoView({ block: 'nearest', inline: 'nearest', behavior: 'smooth' });
+}
+
+VIDEOS.forEach(function (v, i) {
+  var b = document.createElement('button');
+  b.className = 'vt';
+  b.type = 'button';
+  b.setAttribute('role', 'listitem');
+  b.setAttribute('aria-pressed', 'false');
+  b.title = v.title;
+  var box = document.createElement('span');
+  box.className = 'vt-img';
+  var img = document.createElement('img');
+  img.src = v.thumb; img.alt = '';
+  box.appendChild(img);
+  var t = document.createElement('span');
+  t.className = 'vt-title';
+  t.textContent = v.title;
+  b.appendChild(box); b.appendChild(t);
+  b.addEventListener('click', function () { select(i, true); });
+  thumbs.appendChild(b);
+  buttons.push(b);
+});
+
+// primeiro vídeo já começa selecionado e tocando
+select(0, true);
+
+document.getElementById('btn-close').addEventListener('click', closeGallery);
+function closeGallery() {
+  try { player.pause(); } catch (e) {}
+  if (window.parent !== window) {
+    window.parent.postMessage({ action: 'closeGallery' }, '*');
+  } else if (window.history.length > 1) {
+    history.back();
+  } else {
+    window.close();
+  }
+}
+</script>
+</body>
+</html>

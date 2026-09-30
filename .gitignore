@@ -1,0 +1,5 @@
+# Config local do Claude Code
+.claude/
+
+# Lixo do Windows Explorer
+Thumbs.db
