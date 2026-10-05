@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diferenciais</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      /* Grupo Impper — tema navy imersivo */
+      --bg: #0f2029;         /* navy-black de fundo */
+      --accent: #E57D43;     /* laranja */
+      --ease: cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      overflow: hidden;
+      height: 100vh;
+    }
+
+    /* ── SCROLL CONTAINER ── */
+    #wrap {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      will-change: transform;
+    }
+
+    /* ── IMAGES ── */
+    .img-block {
+      display: block;
+      width: 100%;
+      line-height: 0;
+    }
+
+    .img-block img {
+      width: 100%;
+      height: auto;
+      display: block;
+      opacity: 0;
+      transition: opacity 1.2s var(--ease);
+    }
+    .img-block img.loaded { opacity: 1; }
+
+    /* ── RESPONSIVE IMAGE SETS ── */
+    @media (min-width: 769px) { .imgs-mobile  { display: none; } }
+    @media (max-width: 768px) { .imgs-desktop { display: none; } }
+
+    /* ── CLOSE BUTTON ── */
+    #btn-close {
+      position: fixed;
+      top: 18px;
+      right: 22px;
+      z-index: 100;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.22);
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,0.75);
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+    }
+    #btn-close:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+
+    /* ── SCROLL HINT ── */
+    #scroll-hint {
+      position: fixed;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+      z-index: 100;
+      transition: opacity 0.7s var(--ease);
+    }
+    #scroll-hint.hidden { opacity: 0; pointer-events: none; }
+
+    /* Vertical track */
+    .scroll-track {
+      width: 1.5px;
+      height: 52px;
+      background: rgba(255,255,255,0.12);
+      border-radius: 2px;
+      position: relative;
+      overflow: hidden;
+    }
+    /* Animated fill line */
+    .scroll-track::after {
+      content: '';
+      position: absolute;
+      top: -100%;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--accent);
+      border-radius: 2px;
+      animation: track-slide 1.6s var(--ease) infinite;
+    }
+    @keyframes track-slide {
+      0%   { top: -100%; }
+      50%  { top: 0%; }
+      100% { top: 100%; }
+    }
+
+    /* Arrow head — SVG chevron */
+    .scroll-arrow {
+      display: block;
+      margin-top: 6px;
+      filter: drop-shadow(0 0 4px rgba(255,255,255,0.45));
+      animation: arrow-pulse 1.6s var(--ease) infinite;
+    }
+    @keyframes arrow-pulse {
+      0%, 100% { opacity: 0.4; transform: translateY(0); }
+      50%       { opacity: 1;   transform: translateY(5px); }
+    }
+
+    /* ── PROGRESS ── */
+    #progress {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      height: 2px;
+      background: var(--accent);
+      width: 0%;
+      transition: width 0.15s linear;
+      z-index: 100;
+    }
+
+    /* ── ACESSIBILIDADE / DESEMPENHO ── */
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .img-block img { transition-duration: 0.001ms; }
+      .scroll-track::after, .scroll-arrow { animation: none; }
+    }
+  </style>
+</head>
+<body>
+
+<button id="btn-close" title="Fechar">
+  <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
+    <path d="M1 1l11 11M12 1L1 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  </svg>
+</button>
+
+<div id="scroll-hint">
+  <div class="scroll-track"></div>
+  <svg class="scroll-arrow" width="16" height="10" viewBox="0 0 16 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M1 1l7 7 7-7" stroke="rgba(255,255,255,0.92)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</div>
+
+<div id="progress"></div>
+
+<div id="wrap">
+  <!-- Desktop -->
+  <div class="imgs-desktop">
+    <div class="img-block"><img src="assets/diferenciais/ficha.png"        alt="" draggable="false"></div>
+    <div class="img-block"><img src="assets/diferenciais/diferenciais.png" alt="" draggable="false"></div>
+  </div>
+  <!-- Mobile -->
+  <div class="imgs-mobile">
+    <div class="img-block"><img src="assets/diferenciais/mobile/ficha-01.png" alt="" draggable="false"></div>
+    <div class="img-block"><img src="assets/diferenciais/mobile/ficha-02.png" alt="" draggable="false"></div>
+    <div class="img-block"><img src="assets/diferenciais/mobile/ficha-03.png" alt="" draggable="false"></div>
+    <div class="img-block"><img src="assets/diferenciais/mobile/ficha-04.png" alt="" draggable="false"></div>
+    <div class="img-block"><img src="assets/diferenciais/mobile/ficha-05.png" alt="" draggable="false"></div>
+    <div class="img-block"><img src="assets/diferenciais/mobile/ficha-06.png" alt="" draggable="false"></div>
+    <div class="img-block"><img src="assets/diferenciais/mobile/ficha-07.png" alt="" draggable="false"></div>
+  </div>
+</div>
+
+<script>
+(function () {
+  const wrap     = document.getElementById('wrap');
+  const hint     = document.getElementById('scroll-hint');
+  const progress = document.getElementById('progress');
+  const btnClose = document.getElementById('btn-close');
+
+  // ── Smooth scroll via lerp ──────────────────────────
+  let targetY  = 0;
+  let currentY = 0;
+  let maxScroll = 0;
+  const LERP       = 0.072; // scroll normal
+  const LERP_INTRO = 0.045; // não usado no peek (usa animatePeek), mantido como fallback
+  let   activeLerp = LERP;
+
+  function getMaxScroll() {
+    return wrap.scrollHeight - window.innerHeight;
+  }
+
+  function lerp(a, b, t) { return a + (b - a) * t; }
+
+  let peekActive    = false;
+  let peekCancelled = false;
+  let peekDelayRef  = null;
+
+  function cancelPeek() {
+    if (peekCancelled) return;
+    peekCancelled = true;
+    clearTimeout(peekDelayRef);
+    // Se já estava animando, entrega o controle ao lerp a partir da posição atual
+    peekActive = false;
+    targetY    = currentY;
+  }
+
+  function easeInOut(t) {
+    return t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t + 2, 3) / 2;
+  }
+
+  function animatePeek(from, to, duration, onDone) {
+    const start = performance.now();
+    function step(now) {
+      if (peekCancelled) return; // aborta silenciosamente
+      const t    = Math.min((now - start) / duration, 1);
+      const ease = easeInOut(t);
+      currentY = targetY = from + (to - from) * ease;
+      wrap.style.transform = `translateY(${-currentY}px)`;
+      if (t < 1) {
+        requestAnimationFrame(step);
+      } else {
+        currentY = targetY = to;
+        if (onDone) onDone();
+      }
+    }
+    requestAnimationFrame(step);
+  }
+
+  function tick() {
+    if (!peekActive) {
+      currentY = lerp(currentY, targetY, activeLerp);
+      if (Math.abs(currentY - targetY) < 0.05) currentY = targetY;
+      wrap.style.transform = `translateY(${-currentY}px)`;
+    }
+
+    const pct = maxScroll > 0 ? (currentY / maxScroll) * 100 : 0;
+    progress.style.width = pct + '%';
+    hint.classList.toggle('hidden', currentY > 60);
+
+    requestAnimationFrame(tick);
+  }
+
+  // Wheel
+  window.addEventListener('wheel', e => {
+    e.preventDefault();
+    cancelPeek();
+    maxScroll = getMaxScroll();
+    targetY = Math.max(0, Math.min(maxScroll, targetY + e.deltaY * 1.1));
+  }, { passive: false });
+
+  // Touch
+  let touchY0 = 0;
+  window.addEventListener('touchstart', e => {
+    touchY0 = e.touches[0].clientY;
+  }, { passive: true });
+  window.addEventListener('touchmove', e => {
+    e.preventDefault();
+    cancelPeek();
+    maxScroll = getMaxScroll();
+    const dy = touchY0 - e.touches[0].clientY;
+    touchY0  = e.touches[0].clientY;
+    targetY  = Math.max(0, Math.min(maxScroll, targetY + dy * 1.8));
+  }, { passive: false });
+
+  // Keyboard
+  document.addEventListener('keydown', e => {
+    maxScroll = getMaxScroll();
+    const step = window.innerHeight * 0.85;
+    if (['ArrowDown', ' ', 'PageDown'].includes(e.key)) {
+      e.preventDefault();
+      targetY = Math.min(maxScroll, targetY + step);
+    }
+    if (['ArrowUp', 'PageUp'].includes(e.key)) {
+      e.preventDefault();
+      targetY = Math.max(0, targetY - step);
+    }
+    if (e.key === 'Escape') btnClose.click();
+  });
+
+  // Resize — recalcula e clampeia posição atual
+  window.addEventListener('resize', () => {
+    maxScroll = getMaxScroll();
+    targetY  = Math.min(targetY,  Math.max(0, maxScroll));
+    currentY = Math.min(currentY, Math.max(0, maxScroll));
+  });
+
+  // ── Image fade-in ──────────────────────────────────
+  document.querySelectorAll('.img-block img').forEach(img => {
+    if (img.complete) img.classList.add('loaded');
+    else img.addEventListener('load', () => img.classList.add('loaded'));
+  });
+
+  // ── Close ──────────────────────────────────────────
+  btnClose.addEventListener('click', () => {
+    if (window.parent !== window) {
+      window.parent.postMessage({ action: 'closeGallery' }, '*');
+    } else if (window.history.length > 1) {
+      history.back();
+    } else {
+      window.close();
+    }
+  });
+
+  // ── Peek intro ─────────────────────────────────────
+  function peekIntro() {
+    const PEEK_DIST  = Math.round(window.innerHeight * 0.50);
+    const PEEK_DELAY = 1400;
+    const DOWN_DUR   = 1100;
+    const HOLD_DUR   =  700;
+    const UP_DUR     =  950;
+
+    peekDelayRef = setTimeout(() => {
+      if (peekCancelled) return;
+      peekActive = true;
+      animatePeek(0, PEEK_DIST, DOWN_DUR, () => {
+        setTimeout(() => {
+          animatePeek(PEEK_DIST, 0, UP_DUR, () => {
+            peekActive = false;
+          });
+        }, HOLD_DUR);
+      });
+    }, PEEK_DELAY);
+  }
+
+  // Primeiro img visível (respeita qual set está ativo no breakpoint atual)
+  function firstVisibleImg() {
+    const isMobile = window.innerWidth <= 768;
+    return wrap.querySelector(isMobile ? '.imgs-mobile img' : '.imgs-desktop img');
+  }
+
+  const firstImg = firstVisibleImg();
+  if (firstImg && firstImg.complete) {
+    peekIntro();
+  } else if (firstImg) {
+    firstImg.addEventListener('load', peekIntro, { once: true });
+  }
+
+  // ── Init ───────────────────────────────────────────
+  maxScroll = getMaxScroll();
+  requestAnimationFrame(tick);
+
+  window.openDiferenciais = function () {
+    window.location.href = 'diferenciais.html';
+  };
+}());
+</script>
+</body>
+</html>

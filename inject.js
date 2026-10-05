@@ -1,7 +1,9 @@
 (function (w, d) {
   'use strict';
 
-  var GALLERY_URL = 'https://skylineip.s3.sa-east-1.amazonaws.com/Tour+Virtual/R+Yazbek/galeria-maam/index.html';
+  var GALLERY_URL        = 'https://skylineip.s3.sa-east-1.amazonaws.com/Tour+Virtual/Sousa+Andrade/galeria-ryokan/index.html';
+  var VIDEO_GALLERY_URL  = 'https://skylineip.s3.sa-east-1.amazonaws.com/Tour+Virtual/Sousa+Andrade/galeria-ryokan/video-gallery.html';
+  var DIFERENCIAIS_URL   = 'https://skylineip.s3.sa-east-1.amazonaws.com/Tour+Virtual/Sousa+Andrade/galeria-ryokan/diferenciais.html';
 
   var overlay    = null;
   var msgHandler = null;
@@ -16,20 +18,20 @@
     d.head.appendChild(s);
   }
 
-  function _open() {
+  function _open(mode) {
     if (overlay) _close();
     _injectStyles();
 
     overlay = d.createElement('div');
     overlay.id = '_gc_overlay';
     overlay.style.cssText =
-      'position:fixed;inset:0;z-index:2147483646;will-change:opacity;' +
+      'position:fixed;inset:0;z-index:2147483646;' +
       'animation:_gcIn 0.3s ease both;';
 
     var iframe = d.createElement('iframe');
-    iframe.src = GALLERY_URL + '?v=' + Date.now();
-    iframe.style.cssText = 'width:100%;height:100%;border:none;display:block;background:#1c1c1a;';
-    iframe.setAttribute('allow', 'fullscreen; autoplay');
+    iframe.src  = GALLERY_URL + '?mode=' + encodeURIComponent(mode || 'imagens');
+    iframe.style.cssText = 'width:100%;height:100%;border:none;display:block;background:#002E1D;';
+    iframe.setAttribute('allow', 'fullscreen');
 
     overlay.appendChild(iframe);
     d.body.appendChild(overlay);
@@ -42,34 +44,83 @@
 
   function _close() {
     if (!overlay) return;
+    overlay.style.animation = '_gcOut 0.25s ease forwards';
     var ref = overlay;
-    overlay = null;
-
-    ref.style.pointerEvents = 'none';
-    ref.style.animation = '_gcOut 0.2s ease forwards';
-
-    // Descarrega o iframe já, para o vídeo parar de tocar/baixar.
-    var iframe = ref.querySelector('iframe');
-    if (iframe) iframe.src = 'about:blank';
-
-    var removed = false;
-    function remove() {
-      if (removed) return;
-      removed = true;
+    setTimeout(function () {
       if (ref.parentNode) ref.parentNode.removeChild(ref);
-    }
-    ref.addEventListener('animationend', remove, { once: true });
-    setTimeout(remove, 260);
-
+    }, 260);
+    overlay = null;
     if (msgHandler) {
       w.removeEventListener('message', msgHandler);
       msgHandler = null;
     }
   }
 
-  // AbrirGaleriaVideos(1) abre a galeria de vídeos · AbrirGaleriaVideos(0) fecha
+  // ── API pública ──────────────────────────────────────────────
+  // GaleriaImagens(1) → abre galeria de imagens
+  // GaleriaImagens(0) → fecha
+  w.GaleriaImagens = function (show) {
+    if (show === 1) _open('imagens'); else _close();
+  };
+
+  // GaleriaPlantas(1) → abre galeria de plantas
+  // GaleriaPlantas(0) → fecha
+  w.GaleriaPlantas = function (show) {
+    if (show === 1) _open('plantas'); else _close();
+  };
+
+  // AbrirGaleriaVideos(1) → abre galeria de vídeos
+  // AbrirGaleriaVideos(0) → fecha
   w.AbrirGaleriaVideos = function (show) {
-    if (show === 1) _open(); else _close();
+    if (show !== 1) { _close(); return; }
+    if (overlay) _close();
+    _injectStyles();
+
+    overlay = d.createElement('div');
+    overlay.id = '_gc_overlay';
+    overlay.style.cssText =
+      'position:fixed;inset:0;z-index:2147483646;' +
+      'animation:_gcIn 0.3s ease both;';
+
+    var iframe = d.createElement('iframe');
+    iframe.src = VIDEO_GALLERY_URL + '?v=' + Date.now();
+    iframe.style.cssText = 'width:100%;height:100%;border:none;display:block;background:#000;';
+    iframe.setAttribute('allow', 'fullscreen; autoplay');
+
+    overlay.appendChild(iframe);
+    d.body.appendChild(overlay);
+
+    msgHandler = function (e) {
+      if (e.data && e.data.action === 'closeGallery') _close();
+    };
+    w.addEventListener('message', msgHandler);
+  };
+
+  // AbrirDiferenciais(1) → abre tela de diferenciais
+  // AbrirDiferenciais(0) → fecha
+  w.AbrirDiferenciais = function (show) {
+    if (show !== 1) { _close(); return; }
+    if (overlay) _close();
+    _injectStyles();
+
+    overlay = d.createElement('div');
+    overlay.id = '_gc_overlay';
+    overlay.style.cssText =
+      'position:fixed;inset:0;z-index:2147483646;' +
+      'animation:_gcIn 0.3s ease both;';
+
+    var iframe = d.createElement('iframe');
+    iframe.src = DIFERENCIAIS_URL + '?v=' + Date.now();
+    iframe.style.cssText = 'width:100%;height:100%;border:none;display:block;background:#0f2029;';
+    iframe.setAttribute('allow', 'fullscreen');
+
+    overlay.appendChild(iframe);
+    d.body.appendChild(overlay);
+
+    msgHandler = function (e) {
+      if (e.data && e.data.action === 'closeGallery') _close();
+    };
+    w.addEventListener('message', msgHandler);
   };
 
 }(window, document));
