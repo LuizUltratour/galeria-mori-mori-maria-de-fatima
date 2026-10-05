@@ -228,7 +228,7 @@
       position: absolute;
       bottom: 0; left: 0; right: 0;
       padding: 32px 14px 13px;
-      background: linear-gradient(to top, rgba(0,20,13,0.94) 0%, rgba(0,20,13,0.55) 58%, transparent 100%);
+      background: linear-gradient(to top, rgba(33,23,16,0.94) 0%, rgba(33,23,16,0.55) 58%, transparent 100%);
       color: var(--dark);
       opacity: 0;
       transition: opacity 0.35s ease;
@@ -520,7 +520,7 @@
       z-index: 9000;
       display: flex;
       flex-direction: column;
-      background: rgba(0,20,13,0.98);
+      background: rgba(51,36,25,0.98);
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.3s ease;
@@ -962,6 +962,11 @@ const GALLERY_CONFIG = {
   ],
 };
 
+// Versão otimizada p/ o lightbox (assets/large/*.jpg, ~2560px) — o PNG original pesa 10-20 MB
+GALLERY_CONFIG.items.forEach(it => {
+  if (it.src && !it.large) it.large = it.src.replace('assets/', 'assets/large/').replace(/\.[^./]+$/, '.jpg');
+});
+
 // ================================================================
 // ENGINE
 // ================================================================
@@ -1302,6 +1307,28 @@ function closeLb() {
   }, 300);
 }
 
+// Mostra a thumb (já em cache) na hora e troca pela versão large quando carregar
+function showLbSrc(item) {
+  const full = item.large || item.src;
+  if (!full) return;
+  elLbImg.dataset.full = full;
+  const pre = new Image();
+  const apply = () => { if (elLbImg.dataset.full === full) elLbImg.src = full; };
+  pre.onload = apply;
+  pre.onerror = () => { if (elLbImg.dataset.full === full && item.src && elLbImg.src.indexOf(item.src) < 0) elLbImg.src = item.src; };
+  pre.src = full;
+  if (!pre.complete && item.thumb) elLbImg.src = item.thumb;
+}
+
+const _lbPreloaded = {};
+function preloadLb(idx) {
+  const it = st.lbItems[idx];
+  const u = it && (it.large || it.src);
+  if (!u || _lbPreloaded[u]) return;
+  _lbPreloaded[u] = new Image();
+  _lbPreloaded[u].src = u;
+}
+
 function updateLb(dir) {
   const item = st.lbItems[st.lbIdx];
   if (!item) return;
@@ -1314,11 +1341,12 @@ function updateLb(dir) {
   elLbPrev.disabled = st.lbIdx === 0;
   elLbNext.disabled = st.lbIdx === st.lbItems.length - 1;
 
+  [1, -1, 2, -2].forEach(d => preloadLb(st.lbIdx + d));
   if (st._lbSwapT) clearTimeout(st._lbSwapT);
   elLbImg.classList.remove('o-next','o-prev','i-next','i-prev','i-fade');
 
   const swap = () => {
-    elLbImg.src = item.src;
+    showLbSrc(item);
     elLbImg.style.opacity = '1';
     elLbImg.classList.remove('o-next','o-prev');
     void elLbImg.offsetWidth; // reinicia a animação
