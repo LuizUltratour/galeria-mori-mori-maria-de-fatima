@@ -30,7 +30,7 @@
 
     var iframe = d.createElement('iframe');
     iframe.src  = GALLERY_URL + '?mode=' + encodeURIComponent(mode || 'imagens');
-    iframe.style.cssText = 'width:100%;height:100%;border:none;display:block;background:#002E1D;';
+    iframe.style.cssText = 'width:100%;height:100%;border:none;display:block;background:#332419;';
     iframe.setAttribute('allow', 'fullscreen');
 
     overlay.appendChild(iframe);
@@ -111,7 +111,7 @@
 
     var iframe = d.createElement('iframe');
     iframe.src = DIFERENCIAIS_URL + '?v=' + Date.now();
-    iframe.style.cssText = 'width:100%;height:100%;border:none;display:block;background:#0f2029;';
+    iframe.style.cssText = 'width:100%;height:100%;border:none;display:block;background:#332419;';
     iframe.setAttribute('allow', 'fullscreen');
 
     overlay.appendChild(iframe);

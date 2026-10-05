@@ -11,19 +11,19 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      /* Sousa Andrade — Ryokan — tema verde imersivo.
-         --bg = fundo verde-escuro (primária) · --dark = foreground verde-claro (secundária) · --accent = secundária usada em destaque/estado ativo */
-      --bg: #332419;             /* verde-escuro principal — cor primária */
-      --surface: #3F2F22;        /* superfície de card (verde +luz) */
+      /* Sousa Andrade — Ryokan — tema marrom imersivo.
+         --bg = fundo marrom (primária) · --dark = foreground claro (secundária) · --accent = secundária usada em destaque/estado ativo */
+      --bg: #332419;             /* marrom principal — cor primária */
+      --surface: #3F2F22;        /* superfície de card (marrom +luz) */
       --surface-2: #4C3A2B;      /* superfície elevada / hover */
-      --dark: #EAFFF7;           /* foreground / texto principal — cor secundária */
-      --text-soft: rgba(234,255,247,0.62);
-      --border: rgba(234,255,247,0.12);
-      --border-strong: rgba(234,255,247,0.28);
-      --accent: #EAFFF7;         /* verde-claro — destaque / estado ativo */
+      --dark: #F2EBDD;           /* foreground / texto principal — cor secundária */
+      --text-soft: rgba(242,235,221,0.62);
+      --border: rgba(242,235,221,0.12);
+      --border-strong: rgba(242,235,221,0.28);
+      --accent: #F2EBDD;         /* claro — destaque / estado ativo */
       --accent-ink: #332419;     /* texto escuro sobre fundo de destaque claro */
-      --accent-soft: rgba(234,255,247,0.14);
-      --white: #EAFFF7;
+      --accent-soft: rgba(242,235,221,0.14);
+      --white: #F2EBDD;
       --font-serif: 'Cormorant Garamond', Georgia, serif;
       --font-sans: 'Inter', system-ui, sans-serif;
       --ease: cubic-bezier(0.4, 0, 0.2, 1);
@@ -548,18 +548,18 @@
       font-weight: 500;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: rgba(234,255,247,0.4);
+      color: rgba(242,235,221,0.4);
       margin-top: 4px;
     }
     #lb-counter {
       font-size: 11px;
-      color: rgba(234,255,247,0.35);
+      color: rgba(242,235,221,0.35);
       letter-spacing: 0.06em;
       padding-top: 4px;
     }
     #lb-close {
       width: 38px; height: 38px;
-      border: 1px solid rgba(234,255,247,0.25);
+      border: 1px solid rgba(242,235,221,0.25);
       background: transparent;
       cursor: pointer;
       display: flex; align-items: center; justify-content: center;
@@ -612,7 +612,7 @@
       font-weight: 600;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: rgba(234,255,247,0.5);
+      color: rgba(242,235,221,0.5);
       flex-shrink: 0;
     }
     .dual-col img {
@@ -628,7 +628,7 @@
       top: 50%;
       transform: translateY(-50%);
       width: 46px; height: 46px;
-      border: 1px solid rgba(234,255,247,0.18);
+      border: 1px solid rgba(242,235,221,0.18);
       background: transparent;
       cursor: pointer;
       display: flex; align-items: center; justify-content: center;
@@ -652,10 +652,10 @@
     }
     #lb-notice {
       font-size: 10.5px;
-      color: rgba(234,255,247,0.35);
+      color: rgba(242,235,221,0.35);
       letter-spacing: 0.06em;
       padding: 6px 18px;
-      border: 1px solid rgba(234,255,247,0.1);
+      border: 1px solid rgba(242,235,221,0.1);
       border-radius: 40px;
     }
     #lb-notice:empty { display: none; }
@@ -668,7 +668,7 @@
     }
     .lb-zoom-btn {
       width: 32px; height: 32px;
-      border: 1px solid rgba(234,255,247,0.22);
+      border: 1px solid rgba(242,235,221,0.22);
       background: transparent;
       cursor: pointer;
       display: flex; align-items: center; justify-content: center;
@@ -685,7 +685,7 @@
     .lb-zoom-btn:disabled { opacity: 0.2; cursor: default; }
     #lb-zoom-level {
       font-size: 10.5px;
-      color: rgba(234,255,247,0.45);
+      color: rgba(242,235,221,0.45);
       letter-spacing: 0.06em;
       min-width: 36px;
       text-align: center;
@@ -775,7 +775,7 @@
         grid-row: 2;
         width: 42px; height: 42px;
         background: transparent;
-        border-color: rgba(234,255,247,0.3);
+        border-color: rgba(242,235,221,0.3);
       }
       #lb-prev { grid-column: 1; justify-self: end; }
       #lb-next { grid-column: 2; justify-self: start; }
