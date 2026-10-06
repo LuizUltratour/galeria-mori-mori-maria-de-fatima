@@ -7,3 +7,6 @@ assets/BOOK-PRINT.pdf
 
 # Lixo do Windows Explorer
 Thumbs.db
+
+# Plantas originais (>100 MB cada) — so no S3; no git ficam thumbs/ e large/
+assets/PLANTAS HUMANIZADAS/**/*.png
