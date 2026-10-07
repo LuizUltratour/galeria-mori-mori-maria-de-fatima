@@ -271,8 +271,8 @@
     .g-card.loaded:hover .card-zoom { opacity: 1; transform: scale(1); }
 
     /* Plant card */
-    .g-card.is-plant { background: var(--white); }
-    .g-card.is-plant img { object-fit: contain; padding: 12px; }
+    .g-card.is-plant { background: #B1904E; }
+    .g-card.is-plant img { object-fit: cover; padding: 0; }
     .g-card.is-plant::before {
       background: linear-gradient(
         90deg,
@@ -310,7 +310,8 @@
       height: 420px;
     }
     #g-grid.plantas-mode .g-card.is-plant {
-      aspect-ratio: unset;
+      height: auto;
+      aspect-ratio: 16 / 9;
     }
     #g-grid.plantas-mode .g-card.cob-card {
       grid-column: span 1;
