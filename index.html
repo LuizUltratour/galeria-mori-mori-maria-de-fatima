@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Galeria — Sousa Andrade Ryokan</title>
+  <title>Galeria — Mori Mori — Maria de Fátima</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -11,17 +11,17 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      /* Sousa Andrade — Ryokan — tema marrom imersivo.
+      /* Mori Mori — Maria de Fátima — tema verde imersivo.
          --bg = fundo marrom (primária) · --dark = foreground claro (secundária) · --accent = secundária usada em destaque/estado ativo */
-      --bg: #332419;             /* marrom principal — cor primária */
-      --surface: #3F2F22;        /* superfície de card (marrom +luz) */
-      --surface-2: #4C3A2B;      /* superfície elevada / hover */
+      --bg: #325825;             /* marrom principal — cor primária */
+      --surface: #3E6330;        /* superfície de card (marrom +luz) */
+      --surface-2: #4A6E3B;      /* superfície elevada / hover */
       --dark: #F2EBDD;           /* foreground / texto principal — cor secundária */
       --text-soft: rgba(242,235,221,0.62);
       --border: rgba(242,235,221,0.12);
       --border-strong: rgba(242,235,221,0.28);
       --accent: #F2EBDD;         /* claro — destaque / estado ativo */
-      --accent-ink: #332419;     /* texto escuro sobre fundo de destaque claro */
+      --accent-ink: #325825;     /* texto escuro sobre fundo de destaque claro */
       --accent-soft: rgba(242,235,221,0.14);
       --white: #F2EBDD;
       --font-serif: 'Cormorant Garamond', Georgia, serif;
@@ -105,7 +105,7 @@
     }
     @media (hover: hover) { .f-btn:hover { border-color: var(--accent); background: var(--accent-soft); } }
     .f-btn:active { border-color: var(--accent); background: var(--accent-soft); }
-    .f-btn.active { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); box-shadow: 0 4px 14px rgba(51,36,25,0.35); }
+    .f-btn.active { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); box-shadow: 0 4px 14px rgba(50,88,37,0.35); }
     .f-btn:active { transform: scale(0.97); }
 
     /* Sub-filter */
@@ -265,7 +265,7 @@
       transform: scale(0.75);
       transition: opacity 0.25s var(--ease), transform 0.3s var(--spring);
       color: var(--accent-ink);
-      box-shadow: 0 4px 14px rgba(51,36,25,0.45);
+      box-shadow: 0 4px 14px rgba(50,88,37,0.45);
       z-index: 2;
     }
     .g-card.loaded:hover .card-zoom { opacity: 1; transform: scale(1); }
@@ -448,7 +448,7 @@
       position: absolute;
       bottom: 14px; left: 14px;
       padding: 4px 12px;
-      background: rgba(51,36,25,0.82);
+      background: rgba(50,88,37,0.82);
       color: var(--dark);
       font-size: 9.5px;
       font-weight: 500;
@@ -487,7 +487,7 @@
     .cob-hint {
       font-size: 10px;
       letter-spacing: 0.05em;
-      color: rgba(51,36,25,0.5);
+      color: rgba(50,88,37,0.5);
       text-transform: uppercase;
     }
 
@@ -521,7 +521,7 @@
       z-index: 9000;
       display: flex;
       flex-direction: column;
-      background: rgba(51,36,25,0.98);
+      background: rgba(50,88,37,0.98);
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.3s ease;
@@ -824,8 +824,8 @@
     .f-btn, .sf-btn { color: #B1904E; border-color: rgba(177,144,78,0.45); }
     .sf-btn { opacity: 0.75; }
     @media (hover: hover) { .f-btn:hover, .sf-btn:hover { border-color: #B1904E; background: rgba(177,144,78,0.14); } }
-    .f-btn:active, .sf-btn:active { background: #B1904E; color: #332419; border-color: #B1904E; }
-    .f-btn.active, .sf-btn.active { background: #B1904E; color: #332419; border-color: #B1904E; box-shadow: 0 4px 14px rgba(0,0,0,0.25); }
+    .f-btn:active, .sf-btn:active { background: #B1904E; color: #325825; border-color: #B1904E; }
+    .f-btn.active, .sf-btn.active { background: #B1904E; color: #325825; border-color: #B1904E; box-shadow: 0 4px 14px rgba(0,0,0,0.25); }
 
     /* ── Fundo das prévias ── */
     .g-card { background: #B1904E; }
@@ -916,7 +916,7 @@
 // os campos src com os nomes exatos dos arquivos.
 // ================================================================
 const GALLERY_CONFIG = {
-  projectName: 'SOUSA ANDRADE — RYOKAN',
+  projectName: 'MORI MORI — MARIA DE FÁTIMA',
   projectSub:  '',
 
   categories: [
@@ -925,82 +925,40 @@ const GALLERY_CONFIG = {
     {
       id: 'plantas', label: 'Plantas',
       subs: [
-        { id: 'pl-pavimentos',    label: 'Pavimentos' },
-        { id: 'pl-apartamentos',  label: 'Apartamentos' },
+        { id: 'pl-apartamentos',  label: 'Apartamento' },
       ]
     },
   ],
 
   items: [
     // ═══ ÁREAS COMUNS ═══
-    { id:1, type:'image', category:'areas-comuns', title:'Fachada Diurna', src:'assets/IMAGENS/3613_F_IMG_FACHADA_ANGULADA_DIURNA_R05.png', thumb:'assets/thumbs/IMAGENS/3613_F_IMG_FACHADA_ANGULADA_DIURNA_R05.jpg' },
-    { id:2, type:'image', category:'areas-comuns', title:'Fachada Frontal Angulada', src:'assets/IMAGENS/3613_F_IMG_FACHADA_ANGULADA_FRONTAL_R04.png', thumb:'assets/thumbs/IMAGENS/3613_F_IMG_FACHADA_ANGULADA_FRONTAL_R04.jpg' },
-    { id:3, type:'image', category:'areas-comuns', title:'Fachada Noturna', src:'assets/IMAGENS/3613_F_IMG_FACHADA_ANGULADA_NOTURNA_R09.png', thumb:'assets/thumbs/IMAGENS/3613_F_IMG_FACHADA_ANGULADA_NOTURNA_R09.jpg' },
-    { id:4, type:'image', category:'areas-comuns', title:'Fachada Conceito', src:'assets/IMAGENS/3613_F_IMG_FACHADA_CONCEITO_FISHEYE_R02.png', thumb:'assets/thumbs/IMAGENS/3613_F_IMG_FACHADA_CONCEITO_FISHEYE_R02.jpg' },
-    { id:5, type:'image', category:'areas-comuns', title:'Fachada Frontal', src:'assets/IMAGENS/3613_F_IMG_FACHADA_FRONTAL_R10.png', thumb:'assets/thumbs/IMAGENS/3613_F_IMG_FACHADA_FRONTAL_R10.jpg' },
-    { id:6, type:'image', category:'areas-comuns', title:'Fachada Superior', src:'assets/IMAGENS/3613_F_IMG_FACHADA_SUPERIOR_R06.png', thumb:'assets/thumbs/IMAGENS/3613_F_IMG_FACHADA_SUPERIOR_R06.jpg' },
-    { id:7, type:'image', category:'areas-comuns', title:'Lobby 01', src:'assets/IMAGENS/3613_F_IMG_LOBBY_CAM_01_R01.png', thumb:'assets/thumbs/IMAGENS/3613_F_IMG_LOBBY_CAM_01_R01.jpg' },
-    { id:8, type:'image', category:'areas-comuns', title:'Lobby 02', src:'assets/IMAGENS/3613_F_IMG_LOBBY_CAM_02_R03.png', thumb:'assets/thumbs/IMAGENS/3613_F_IMG_LOBBY_CAM_02_R03.jpg' },
-    { id:9, type:'image', category:'areas-comuns', title:'Elevador', src:'assets/IMAGENS/3613_F_IMG_ELEVADOR_R02.png', thumb:'assets/thumbs/IMAGENS/3613_F_IMG_ELEVADOR_R02.jpg' },
-    { id:10, type:'image', category:'areas-comuns', title:'Corredor Zen', src:'assets/IMAGENS/3613_F_IMG_CORREDOR_ZEN_R03.png', thumb:'assets/thumbs/IMAGENS/3613_F_IMG_CORREDOR_ZEN_R03.jpg' },
-    { id:11, type:'image', category:'areas-comuns', title:'Circulação Pavimento Tipo', src:'assets/IMAGENS/3613_F_IMG_CIRCULACAO_PAV_TIPO_R02.png', thumb:'assets/thumbs/IMAGENS/3613_F_IMG_CIRCULACAO_PAV_TIPO_R02.jpg' },
-    { id:12, type:'image', category:'areas-comuns', title:'Circulação Rooftop', src:'assets/IMAGENS/3613_F_IMG_CIRCULACAO_ROOFTOP_R01.png', thumb:'assets/thumbs/IMAGENS/3613_F_IMG_CIRCULACAO_ROOFTOP_R01.jpg' },
-    { id:13, type:'image', category:'areas-comuns', title:'Rooftop Piscina 01', src:'assets/IMAGENS/3613_F_IMG_ROOFTOP_PISCINA_CAM_01_R06.png', thumb:'assets/thumbs/IMAGENS/3613_F_IMG_ROOFTOP_PISCINA_CAM_01_R06.jpg' },
-    { id:14, type:'image', category:'areas-comuns', title:'Rooftop Piscina 02', src:'assets/IMAGENS/3613_F_IMG_ROOFTOP_PISCINA_CAM_02_R05.png', thumb:'assets/thumbs/IMAGENS/3613_F_IMG_ROOFTOP_PISCINA_CAM_02_R05.jpg' },
-    { id:15, type:'image', category:'areas-comuns', title:'Rooftop Piscina 03', src:'assets/IMAGENS/3613_F_IMG_ROOFTOP_PISCINA_CAM_03_R03.png', thumb:'assets/thumbs/IMAGENS/3613_F_IMG_ROOFTOP_PISCINA_CAM_03_R03.jpg' },
-    { id:16, type:'image', category:'areas-comuns', title:'Rooftop Piscina 04', src:'assets/IMAGENS/3613_F_IMG_ROOFTOP_PISCINA_CAM_04_R06.png', thumb:'assets/thumbs/IMAGENS/3613_F_IMG_ROOFTOP_PISCINA_CAM_04_R06.jpg' },
-    { id:17, type:'image', category:'areas-comuns', title:'Gourmet 01', src:'assets/IMAGENS/3613_F_IMG_GOURMET_01_R04.png', thumb:'assets/thumbs/IMAGENS/3613_F_IMG_GOURMET_01_R04.jpg' },
-    { id:18, type:'image', category:'areas-comuns', title:'Gourmet Cam 01', src:'assets/IMAGENS/3613_F_IMG_GOURMET_CAM01_R02.png', thumb:'assets/thumbs/IMAGENS/3613_F_IMG_GOURMET_CAM01_R02.jpg' },
-    { id:19, type:'image', category:'areas-comuns', title:'Gourmet Cam 02', src:'assets/IMAGENS/3613_F_IMG_GOURMET_CAM02_R03.png', thumb:'assets/thumbs/IMAGENS/3613_F_IMG_GOURMET_CAM02_R03.jpg' },
-    { id:20, type:'image', category:'areas-comuns', title:'Gourmet 02 — Cam 03', src:'assets/IMAGENS/3613_F_IMG_GOURMET_02_CAM_03_R03.png', thumb:'assets/thumbs/IMAGENS/3613_F_IMG_GOURMET_02_CAM_03_R03.jpg' },
-    { id:21, type:'image', category:'areas-comuns', title:'Academia', src:'assets/IMAGENS/3613_F_IMG_ACADEMIA_CAM_02_R03.png', thumb:'assets/thumbs/IMAGENS/3613_F_IMG_ACADEMIA_CAM_02_R03.jpg' },
-    { id:22, type:'image', category:'areas-comuns', title:'Sauna', src:'assets/IMAGENS/3613_F_IMG_SAUNA_R04.png', thumb:'assets/thumbs/IMAGENS/3613_F_IMG_SAUNA_R04.jpg' },
-    { id:23, type:'image', category:'areas-comuns', title:'Coworking 01', src:'assets/IMAGENS/3613_F_IMG_COWORKING_CAM_01_R04.png', thumb:'assets/thumbs/IMAGENS/3613_F_IMG_COWORKING_CAM_01_R04.jpg' },
-    { id:24, type:'image', category:'areas-comuns', title:'Coworking 02', src:'assets/IMAGENS/3613_F_IMG_COWORKING_CAM_02_R04.png', thumb:'assets/thumbs/IMAGENS/3613_F_IMG_COWORKING_CAM_02_R04.jpg' },
-    { id:25, type:'image', category:'areas-comuns', title:'Mini Market', src:'assets/IMAGENS/3613_F_IMG_MINI_MARKET_R06.png', thumb:'assets/thumbs/IMAGENS/3613_F_IMG_MINI_MARKET_R06.jpg' },
-    { id:26, type:'image', category:'areas-comuns', title:'Lavanderia', src:'assets/IMAGENS/3613_F_IMG_LAVANDERIA_R02.png', thumb:'assets/thumbs/IMAGENS/3613_F_IMG_LAVANDERIA_R02.jpg' },
-    { id:27, type:'image', category:'areas-comuns', title:'Delivery', src:'assets/IMAGENS/3613_F_IMG_DELIVERY_R05.png', thumb:'assets/thumbs/IMAGENS/3613_F_IMG_DELIVERY_R05.jpg' },
+    { id:1, type:'image', category:'areas-comuns', title:'Áreas Comuns 01', src:'assets/IMAGENS/01.png', thumb:'assets/thumbs/IMAGENS/01.jpg' },
+    { id:2, type:'image', category:'areas-comuns', title:'Áreas Comuns 02', src:'assets/IMAGENS/02.png', thumb:'assets/thumbs/IMAGENS/02.jpg' },
+    { id:3, type:'image', category:'areas-comuns', title:'Áreas Comuns 03', src:'assets/IMAGENS/03.png', thumb:'assets/thumbs/IMAGENS/03.jpg' },
+    { id:4, type:'image', category:'areas-comuns', title:'Áreas Comuns 04', src:'assets/IMAGENS/04.png', thumb:'assets/thumbs/IMAGENS/04.jpg' },
+    { id:5, type:'image', category:'areas-comuns', title:'Áreas Comuns 05', src:'assets/IMAGENS/05.png', thumb:'assets/thumbs/IMAGENS/05.jpg' },
+    { id:6, type:'image', category:'areas-comuns', title:'Áreas Comuns 06', src:'assets/IMAGENS/06.png', thumb:'assets/thumbs/IMAGENS/06.jpg' },
+    { id:7, type:'image', category:'areas-comuns', title:'Áreas Comuns 08', src:'assets/IMAGENS/08.png', thumb:'assets/thumbs/IMAGENS/08.jpg' },
+    { id:8, type:'image', category:'areas-comuns', title:'Áreas Comuns 09', src:'assets/IMAGENS/09.png', thumb:'assets/thumbs/IMAGENS/09.jpg' },
+    { id:9, type:'image', category:'areas-comuns', title:'Áreas Comuns 10', src:'assets/IMAGENS/10.png', thumb:'assets/thumbs/IMAGENS/10.jpg' },
+    { id:10, type:'image', category:'areas-comuns', title:'Áreas Comuns 12', src:'assets/IMAGENS/12.png', thumb:'assets/thumbs/IMAGENS/12.jpg' },
+    { id:11, type:'image', category:'areas-comuns', title:'Áreas Comuns 13', src:'assets/IMAGENS/13.png', thumb:'assets/thumbs/IMAGENS/13.jpg' },
+    { id:12, type:'image', category:'areas-comuns', title:'Áreas Comuns 14', src:'assets/IMAGENS/14.png', thumb:'assets/thumbs/IMAGENS/14.jpg' },
+    { id:13, type:'image', category:'areas-comuns', title:'Áreas Comuns 15', src:'assets/IMAGENS/15.png', thumb:'assets/thumbs/IMAGENS/15.jpg' },
+    { id:14, type:'image', category:'areas-comuns', title:'Áreas Comuns 16', src:'assets/IMAGENS/16.png', thumb:'assets/thumbs/IMAGENS/16.jpg' },
+    { id:15, type:'image', category:'areas-comuns', title:'Áreas Comuns 17', src:'assets/IMAGENS/17.png', thumb:'assets/thumbs/IMAGENS/17.jpg' },
+    { id:16, type:'image', category:'areas-comuns', title:'Áreas Comuns 18', src:'assets/IMAGENS/18.png', thumb:'assets/thumbs/IMAGENS/18.jpg' },
 
     // ═══ APARTAMENTO DECORADO ═══
-    { id:20, type:'image', category:'apartamento', title:'Apto F01 — Cozinha e Living', src:'assets/IMAGENS/3613_F_IMG_APTO_F01_COZINHA_LIVING_R05.png', thumb:'assets/thumbs/IMAGENS/3613_F_IMG_APTO_F01_COZINHA_LIVING_R05.jpg' },
-    { id:21, type:'image', category:'apartamento', title:'Apto F01 — Office', src:'assets/IMAGENS/3613_F_IMG_APTO_F01_OFFICE_R04.png', thumb:'assets/thumbs/IMAGENS/3613_F_IMG_APTO_F01_OFFICE_R04.jpg' },
-    { id:22, type:'image', category:'apartamento', title:'Apto F01 — Quarto', src:'assets/IMAGENS/3613_F_IMG_APTO_F01_QUARTO_R03.png', thumb:'assets/thumbs/IMAGENS/3613_F_IMG_APTO_F01_QUARTO_R03.jpg' },
-    { id:23, type:'image', category:'apartamento', title:'Apto F08', src:'assets/IMAGENS/3613_F_IMG_APTO_F08_R01.png', thumb:'assets/thumbs/IMAGENS/3613_F_IMG_APTO_F08_R01.jpg' },
-    { id:24, type:'image', category:'apartamento', title:'Apto F09', src:'assets/IMAGENS/3613_F_IMG_APTO_F09_R01.png', thumb:'assets/thumbs/IMAGENS/3613_F_IMG_APTO_F09_R01.jpg' },
-    { id:25, type:'image', category:'apartamento', title:'Apto F15 — Living', src:'assets/IMAGENS/3613_F_IMG_APTO_F15_LIVING_R00.png', thumb:'assets/thumbs/IMAGENS/3613_F_IMG_APTO_F15_LIVING_R00.jpg' },
-    { id:26, type:'image', category:'apartamento', title:'Apto F15 — Suíte', src:'assets/IMAGENS/3613_F_IMG_APTO_F15_SUITE_R00.png', thumb:'assets/thumbs/IMAGENS/3613_F_IMG_APTO_F15_SUITE_R00.jpg' },
-    { id:27, type:'image', category:'apartamento', title:'Decorado F13 — Cam 01', src:'assets/IMAGENS/3613_F_IMG_DECORADO_F13_CAM_01_R00.png', thumb:'assets/thumbs/IMAGENS/3613_F_IMG_DECORADO_F13_CAM_01_R00.jpg' },
-    { id:28, type:'image', category:'apartamento', title:'Decorado F13 — Cam 02', src:'assets/IMAGENS/3613_F_IMG_DECORADO_F13_CAM_02_R01.png', thumb:'assets/thumbs/IMAGENS/3613_F_IMG_DECORADO_F13_CAM_02_R01.jpg' },
+    { id:17, type:'image', category:'apartamento', title:'Sala de Estar', src:'assets/IMAGENS/Sala de estar.png', thumb:'assets/thumbs/IMAGENS/Sala de estar.jpg' },
+    { id:18, type:'image', category:'apartamento', title:'Sala de Jantar', src:'assets/IMAGENS/Sala de jantar.png', thumb:'assets/thumbs/IMAGENS/Sala de jantar.jpg' },
+    { id:19, type:'image', category:'apartamento', title:'Cozinha', src:'assets/IMAGENS/Cozinha.png', thumb:'assets/thumbs/IMAGENS/Cozinha.jpg' },
+    { id:20, type:'image', category:'apartamento', title:'Quarto 01', src:'assets/IMAGENS/Quarto 01.png', thumb:'assets/thumbs/IMAGENS/Quarto 01.jpg' },
+    { id:21, type:'image', category:'apartamento', title:'Quarto 02', src:'assets/IMAGENS/Quarto 02.png', thumb:'assets/thumbs/IMAGENS/Quarto 02.jpg' },
+    { id:22, type:'image', category:'apartamento', title:'Banheiro', src:'assets/IMAGENS/Banheiro.png', thumb:'assets/thumbs/IMAGENS/Banheiro.jpg' },
 
-    // ═══ PLANTAS › PAVIMENTOS ═══
-    { id:30, type:'image', category:'plantas', subCategory:'pl-pavimentos', isPlant:true, title:'Garagem Pavimento 1', src:'assets/PLANTAS HUMANIZADAS/PAVIMENTOS/garagem-pav-1.png', thumb:'assets/thumbs/PLANTAS HUMANIZADAS/PAVIMENTOS/garagem-pav-1.jpg' },
-    { id:31, type:'image', category:'plantas', subCategory:'pl-pavimentos', isPlant:true, title:'Garagem Pavimento 2', src:'assets/PLANTAS HUMANIZADAS/PAVIMENTOS/garagem-pav-2.png', thumb:'assets/thumbs/PLANTAS HUMANIZADAS/PAVIMENTOS/garagem-pav-2.jpg' },
-    { id:32, type:'image', category:'plantas', subCategory:'pl-pavimentos', isPlant:true, title:'Garagem Térreo 01', src:'assets/PLANTAS HUMANIZADAS/PAVIMENTOS/garagem-terreo-01.png', thumb:'assets/thumbs/PLANTAS HUMANIZADAS/PAVIMENTOS/garagem-terreo-01.jpg' },
-    { id:33, type:'image', category:'plantas', subCategory:'pl-pavimentos', isPlant:true, title:'Acesso Garagem — Térreo 02', src:'assets/PLANTAS HUMANIZADAS/PAVIMENTOS/acesso-garagem-terreo-02.png', thumb:'assets/thumbs/PLANTAS HUMANIZADAS/PAVIMENTOS/acesso-garagem-terreo-02.jpg' },
-    { id:34, type:'image', category:'plantas', subCategory:'pl-pavimentos', isPlant:true, title:'Rooftop', src:'assets/PLANTAS HUMANIZADAS/PAVIMENTOS/28-rooftop.png', thumb:'assets/thumbs/PLANTAS HUMANIZADAS/PAVIMENTOS/28-rooftop.jpg' },
-    { id:35, type:'image', category:'plantas', subCategory:'pl-pavimentos', isPlant:true, title:'Studio 26 m² — Final 09', src:'assets/PLANTAS HUMANIZADAS/PAVIMENTOS/26.png', thumb:'assets/thumbs/PLANTAS HUMANIZADAS/PAVIMENTOS/26.jpg' },
-    { id:36, type:'image', category:'plantas', subCategory:'pl-pavimentos', isPlant:true, title:'Studio 29 m² — Planta Padrão e Decorado', src:'assets/PLANTAS HUMANIZADAS/PAVIMENTOS/29.png', thumb:'assets/thumbs/PLANTAS HUMANIZADAS/PAVIMENTOS/29.jpg' },
-    { id:37, type:'image', category:'plantas', subCategory:'pl-pavimentos', isPlant:true, title:'1 Suíte 34 m² — Final 15', src:'assets/PLANTAS HUMANIZADAS/PAVIMENTOS/34.png', thumb:'assets/thumbs/PLANTAS HUMANIZADAS/PAVIMENTOS/34.jpg' },
-    { id:38, type:'image', category:'plantas', subCategory:'pl-pavimentos', isPlant:true, title:'2 Quartos 45 m² — Final 08', src:'assets/PLANTAS HUMANIZADAS/PAVIMENTOS/45.png', thumb:'assets/thumbs/PLANTAS HUMANIZADAS/PAVIMENTOS/45.jpg' },
-    { id:39, type:'image', category:'plantas', subCategory:'pl-pavimentos', isPlant:true, title:'2 Quartos 48 m² — Final 01', src:'assets/PLANTAS HUMANIZADAS/PAVIMENTOS/48.png', thumb:'assets/thumbs/PLANTAS HUMANIZADAS/PAVIMENTOS/48.jpg' },
-
-    // ═══ PLANTAS › APARTAMENTOS ═══
-    { id:40, type:'image', category:'plantas', subCategory:'pl-apartamentos', isPlant:true, title:'Apto Decorado F13', src:'assets/PLANTAS HUMANIZADAS/APARTAMENTOS/3613_F_PH_APTO_DECORADO_F13_R00.png', thumb:'assets/thumbs/PLANTAS HUMANIZADAS/APARTAMENTOS/3613_F_PH_APTO_DECORADO_F13_R00.jpg' },
-    { id:41, type:'image', category:'plantas', subCategory:'pl-apartamentos', isPlant:true, title:'Apto F01', src:'assets/PLANTAS HUMANIZADAS/APARTAMENTOS/3613_F_PH_APTO_F01_R00.png', thumb:'assets/thumbs/PLANTAS HUMANIZADAS/APARTAMENTOS/3613_F_PH_APTO_F01_R00.jpg' },
-    { id:42, type:'image', category:'plantas', subCategory:'pl-apartamentos', isPlant:true, title:'Apto F02', src:'assets/PLANTAS HUMANIZADAS/APARTAMENTOS/3613_F_PH_APTO_F02_R00.png', thumb:'assets/thumbs/PLANTAS HUMANIZADAS/APARTAMENTOS/3613_F_PH_APTO_F02_R00.jpg' },
-    { id:43, type:'image', category:'plantas', subCategory:'pl-apartamentos', isPlant:true, title:'Apto F03', src:'assets/PLANTAS HUMANIZADAS/APARTAMENTOS/3613_F_PH_APTO_F03_R01.png', thumb:'assets/thumbs/PLANTAS HUMANIZADAS/APARTAMENTOS/3613_F_PH_APTO_F03_R01.jpg' },
-    { id:44, type:'image', category:'plantas', subCategory:'pl-apartamentos', isPlant:true, title:'Apto F04', src:'assets/PLANTAS HUMANIZADAS/APARTAMENTOS/3613_F_PH_APTO_F04_R02.png', thumb:'assets/thumbs/PLANTAS HUMANIZADAS/APARTAMENTOS/3613_F_PH_APTO_F04_R02.jpg' },
-    { id:45, type:'image', category:'plantas', subCategory:'pl-apartamentos', isPlant:true, title:'Apto F05', src:'assets/PLANTAS HUMANIZADAS/APARTAMENTOS/3613_F_PH_APTO_F05_R02.png', thumb:'assets/thumbs/PLANTAS HUMANIZADAS/APARTAMENTOS/3613_F_PH_APTO_F05_R02.jpg' },
-    { id:46, type:'image', category:'plantas', subCategory:'pl-apartamentos', isPlant:true, title:'Apto F06', src:'assets/PLANTAS HUMANIZADAS/APARTAMENTOS/3613_F_PH_APTO_F06_R00.png', thumb:'assets/thumbs/PLANTAS HUMANIZADAS/APARTAMENTOS/3613_F_PH_APTO_F06_R00.jpg' },
-    { id:47, type:'image', category:'plantas', subCategory:'pl-apartamentos', isPlant:true, title:'Apto F07', src:'assets/PLANTAS HUMANIZADAS/APARTAMENTOS/3613_F_PH_APTO_F07_R00.png', thumb:'assets/thumbs/PLANTAS HUMANIZADAS/APARTAMENTOS/3613_F_PH_APTO_F07_R00.jpg' },
-    { id:48, type:'image', category:'plantas', subCategory:'pl-apartamentos', isPlant:true, title:'Apto F08', src:'assets/PLANTAS HUMANIZADAS/APARTAMENTOS/3613_F_PH_APTO_F08_R01.png', thumb:'assets/thumbs/PLANTAS HUMANIZADAS/APARTAMENTOS/3613_F_PH_APTO_F08_R01.jpg' },
-    { id:49, type:'image', category:'plantas', subCategory:'pl-apartamentos', isPlant:true, title:'Apto F09', src:'assets/PLANTAS HUMANIZADAS/APARTAMENTOS/3613_F_PH_APTO_F09_R02.png', thumb:'assets/thumbs/PLANTAS HUMANIZADAS/APARTAMENTOS/3613_F_PH_APTO_F09_R02.jpg' },
-    { id:50, type:'image', category:'plantas', subCategory:'pl-apartamentos', isPlant:true, title:'Apto F10', src:'assets/PLANTAS HUMANIZADAS/APARTAMENTOS/3613_F_PH_APTO_F10_R00.png', thumb:'assets/thumbs/PLANTAS HUMANIZADAS/APARTAMENTOS/3613_F_PH_APTO_F10_R00.jpg' },
-    { id:51, type:'image', category:'plantas', subCategory:'pl-apartamentos', isPlant:true, title:'Apto F11', src:'assets/PLANTAS HUMANIZADAS/APARTAMENTOS/3613_F_PH_APTO_F11_R00.png', thumb:'assets/thumbs/PLANTAS HUMANIZADAS/APARTAMENTOS/3613_F_PH_APTO_F11_R00.jpg' },
-    { id:52, type:'image', category:'plantas', subCategory:'pl-apartamentos', isPlant:true, title:'Apto F12', src:'assets/PLANTAS HUMANIZADAS/APARTAMENTOS/3613_F_PH_APTO_F12_R00.png', thumb:'assets/thumbs/PLANTAS HUMANIZADAS/APARTAMENTOS/3613_F_PH_APTO_F12_R00.jpg' },
-    { id:53, type:'image', category:'plantas', subCategory:'pl-apartamentos', isPlant:true, title:'Apto F13', src:'assets/PLANTAS HUMANIZADAS/APARTAMENTOS/3613_F_PH_APTO_F13_R00.png', thumb:'assets/thumbs/PLANTAS HUMANIZADAS/APARTAMENTOS/3613_F_PH_APTO_F13_R00.jpg' },
-    { id:54, type:'image', category:'plantas', subCategory:'pl-apartamentos', isPlant:true, title:'Apto F14', src:'assets/PLANTAS HUMANIZADAS/APARTAMENTOS/3613_F_PH_APTO_F14_R00.png', thumb:'assets/thumbs/PLANTAS HUMANIZADAS/APARTAMENTOS/3613_F_PH_APTO_F14_R00.jpg' },
-    { id:55, type:'image', category:'plantas', subCategory:'pl-apartamentos', isPlant:true, title:'Apto F15', src:'assets/PLANTAS HUMANIZADAS/APARTAMENTOS/3613_F_PH_APTO_F15_R00.png', thumb:'assets/thumbs/PLANTAS HUMANIZADAS/APARTAMENTOS/3613_F_PH_APTO_F15_R00.jpg' },
+    // ═══ PLANTAS ═══
+    { id:23, type:'image', category:'plantas', subCategory:'pl-apartamentos', isPlant:true, title:'Planta 3D', src:'assets/IMAGENS/PLANTA 3D.png', thumb:'assets/thumbs/IMAGENS/PLANTA 3D.jpg' },
   ],
 };
 
@@ -1048,8 +1006,7 @@ const MODE = (() => {
 // Categorias exibidas no filtro principal conforme modo
 const DISPLAY_CATS = (() => {
   if (MODE === 'plantas') return [
-    { id: 'pl-pavimentos', label: 'Pavimentos' },
-    { id: 'pl-apartamentos', label: 'Apartamentos' },
+    { id: 'pl-apartamentos', label: 'Apartamento' },
   ];
   if (MODE === 'imagens') return GALLERY_CONFIG.categories.filter(c => c.id !== 'plantas');
   return GALLERY_CONFIG.categories;
@@ -1432,7 +1389,7 @@ function closeGallery() {
 function init() {
   // Filtro inicial depende do modo
   if (MODE === 'plantas') {
-    st.cat = 'pl-pavimentos';  // primeira tipologia de plantas
+    st.cat = 'pl-apartamentos';
     st.sub = null;
   } else {
     st.cat = DISPLAY_CATS[0].id;               // 'areas-comuns'

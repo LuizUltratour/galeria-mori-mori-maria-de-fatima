@@ -1,9 +1,9 @@
-# Modern Galeria — Sousa Andrade Ryokan
+# Modern Galeria — Mori Mori Ryokan
 
 Galeria de imagens/plantas/vídeos para injeção via script no 3DVista, hospedada no AWS S3.
 
-**Projeto:** Sousa Andrade — Ryokan
-**Tema:** verde imersivo (`#002E1D` / `#EAFFF7`)
+**Projeto:** Mori Mori — Ryokan
+**Tema:** verde imersivo (`#325825` / `#EAFFF7`)
 
 ---
 
@@ -11,18 +11,18 @@ Galeria de imagens/plantas/vídeos para injeção via script no 3DVista, hospeda
 
 | Arquivo | URL |
 |---------|-----|
-| Galeria | `https://skylineip.s3.sa-east-1.amazonaws.com/Tour+Virtual/Sousa+Andrade/galeria-ryokan/index.html` |
-| Vídeos  | `https://skylineip.s3.sa-east-1.amazonaws.com/Tour+Virtual/Sousa+Andrade/galeria-ryokan/video-gallery.html` |
-| Script  | `https://skylineip.s3.sa-east-1.amazonaws.com/Tour+Virtual/Sousa+Andrade/galeria-ryokan/inject.js` |
+| Galeria | `https://skylineip.s3.sa-east-1.amazonaws.com/Tour+Virtual/mori-mori/galeria-maria-de-fatima/index.html` |
+| Vídeos  | `https://skylineip.s3.sa-east-1.amazonaws.com/Tour+Virtual/mori-mori/galeria-maria-de-fatima/video-gallery.html` |
+| Script  | `https://skylineip.s3.sa-east-1.amazonaws.com/Tour+Virtual/mori-mori/galeria-maria-de-fatima/inject.js` |
 
-**S3 path:** `s3://skylineip/Tour Virtual/Sousa Andrade/galeria-ryokan/`
+**S3 path:** `s3://skylineip/Tour Virtual/mori-mori/galeria-maria-de-fatima/`
 
 ---
 
 ## Estrutura de arquivos
 
 ```
-galeria/  (Sousa Andrade / Ryokan)
+galeria/  (Mori Mori / Ryokan)
 ├── index.html              ← galeria de imagens + plantas (auto-suficiente)
 ├── video-gallery.html      ← galeria de vídeos
 ├── diferenciais.html       ← ficha de diferenciais (scroll)
@@ -106,7 +106,7 @@ ignora `thumbs/`, `videos/` e o PDF.
 ### Sync completo
 
 ```bash
-aws s3 sync . "s3://skylineip/Tour Virtual/Sousa Andrade/galeria-ryokan/" \
+aws s3 sync . "s3://skylineip/Tour Virtual/mori-mori/galeria-maria-de-fatima/" \
   --exclude ".git/*" --exclude ".claude/*" --exclude "*.py" \
   --exclude "README.md" --exclude ".gitattributes" --exclude "*.md" \
   --exclude "deploy.ps1" --exclude "*.pdf" \
@@ -116,10 +116,10 @@ aws s3 sync . "s3://skylineip/Tour Virtual/Sousa Andrade/galeria-ryokan/" \
 ### Atualizar só index.html e inject.js
 
 ```bash
-aws s3 cp index.html "s3://skylineip/Tour Virtual/Sousa Andrade/galeria-ryokan/index.html" \
+aws s3 cp index.html "s3://skylineip/Tour Virtual/mori-mori/galeria-maria-de-fatima/index.html" \
   --cache-control "no-cache,no-store,must-revalidate"
 
-aws s3 cp inject.js "s3://skylineip/Tour Virtual/Sousa Andrade/galeria-ryokan/inject.js" \
+aws s3 cp inject.js "s3://skylineip/Tour Virtual/mori-mori/galeria-maria-de-fatima/inject.js" \
   --cache-control "no-cache,no-store,must-revalidate"
 ```
 
@@ -134,7 +134,7 @@ aws s3 cp inject.js "s3://skylineip/Tour Virtual/Sousa Andrade/galeria-ryokan/in
 ```js
 (function(){
   var s = document.createElement('script');
-  s.src = 'https://skylineip.s3.sa-east-1.amazonaws.com/Tour+Virtual/Sousa+Andrade/galeria-ryokan/inject.js?v=' + Date.now();
+  s.src = 'https://skylineip.s3.sa-east-1.amazonaws.com/Tour+Virtual/mori-mori/galeria-maria-de-fatima/inject.js?v=' + Date.now();
   document.head.appendChild(s);
 })();
 ```
@@ -161,15 +161,15 @@ GaleriaPlantas(0);
 
 ## Cores e tipografia
 
-Tema **verde imersivo** do Sousa Andrade — Ryokan:
+Tema **verde imersivo** do Mori Mori — Ryokan:
 
 | Token CSS | Valor | Papel |
 |-----------|-------|-------|
-| `--bg` (fundo) | `#002E1D` | Verde-escuro principal (fundo) — cor primária |
+| `--bg` (fundo) | `#325825` | Verde-escuro principal (fundo) — cor primária |
 | `--surface` | `#073C28` | Superfície de card |
 | `--dark` (foreground) | `#EAFFF7` | Texto/ícones (verde-claro) — cor secundária |
 | `--accent` | `#EAFFF7` | Destaque / estado ativo (usa a secundária sobre fundo escuro) |
 | Fonte títulos | Cormorant Garamond | — |
 | Fonte UI | Inter | — |
 
-> Plantas técnicas mantêm **fundo claro** no card (`#EAFFF7`, para legibilidade do desenho), com texto verde-escuro (`#002E1D`) — a mesma dupla primária/secundária, com os papéis invertidos.
+> Plantas técnicas mantêm **fundo claro** no card (`#EAFFF7`, para legibilidade do desenho), com texto verde-escuro (`#325825`) — a mesma dupla primária/secundária, com os papéis invertidos.
