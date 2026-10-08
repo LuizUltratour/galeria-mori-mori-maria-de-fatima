@@ -827,6 +827,11 @@
     .f-btn:active, .sf-btn:active { background: #B1904E; color: #325825; border-color: #B1904E; }
     .f-btn.active, .sf-btn.active { background: #B1904E; color: #325825; border-color: #B1904E; box-shadow: 0 4px 14px rgba(0,0,0,0.25); }
 
+    /* ── Botões de filtro: #325825 / texto branco; pressed/ativo invertido; sem cantos arredondados ── */
+    .f-btn, .sf-btn { background: #325825; color: #FFFFFF; border: 1px solid rgba(255,255,255,0.45); border-radius: 0; opacity: 1; }
+    @media (hover: hover) { .f-btn:hover, .sf-btn:hover { background: #325825; color: #FFFFFF; border-color: #FFFFFF; } }
+    .f-btn:active, .sf-btn:active, .f-btn.active, .sf-btn.active { background: #FFFFFF; color: #325825; border-color: #FFFFFF; box-shadow: none; }
+
     /* ── Fundo das prévias ── */
     .g-card { background: #B1904E; }
 
