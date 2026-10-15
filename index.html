@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Galeria — Mori Mori — Maria de Fátima</title>
+  <title>Galeria — Mori Mori — Miranda de Castro</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -11,7 +11,7 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      /* Mori Mori — Maria de Fátima — tema verde imersivo.
+      /* Mori Mori — Miranda de Castro — tema verde imersivo.
          --bg = fundo marrom (primária) · --dark = foreground claro (secundária) · --accent = secundária usada em destaque/estado ativo */
       --bg: #325825;             /* marrom principal — cor primária */
       --surface: #3E6330;        /* superfície de card (marrom +luz) */
@@ -33,7 +33,7 @@
     html, body {
       height: 100%;
       overflow: hidden;
-      background: var(--bg);
+      background: var(--bg) url(assets/bg.png) center/cover no-repeat fixed;
       color: var(--dark);
       font-family: var(--font-sans);
     }
@@ -43,7 +43,7 @@
       display: flex;
       flex-direction: column;
       height: 100vh;
-      background: var(--bg);
+      background: transparent;
     }
 
     /* ── HEADER ── */
@@ -921,49 +921,53 @@
 // os campos src com os nomes exatos dos arquivos.
 // ================================================================
 const GALLERY_CONFIG = {
-  projectName: 'MORI MORI — MARIA DE FÁTIMA',
+  projectName: 'MORI MORI — MIRANDA DE CASTRO',
   projectSub:  '',
 
   categories: [
+    { id: 'fachadas',     label: 'Fachadas' },
     { id: 'areas-comuns', label: 'Áreas Comuns' },
-    { id: 'apartamento',  label: 'Apartamento Decorado' },
-    {
-      id: 'plantas', label: 'Plantas',
-      subs: [
-        { id: 'pl-apartamentos',  label: 'Apartamento' },
-      ]
-    },
   ],
 
   items: [
+    // ═══ FACHADAS ═══
+    { id:1, type:'image', category:'fachadas', title:'Fachada Diurna', src:'assets/IMAGENS/Fachada Diurna.png', thumb:'assets/thumbs/IMAGENS/Fachada Diurna.jpg' },
+    { id:2, type:'image', category:'fachadas', title:'Fachada Noturna', src:'assets/IMAGENS/Fachada Noturna.png', thumb:'assets/thumbs/IMAGENS/Fachada Noturna.jpg' },
+    { id:3, type:'image', category:'fachadas', title:'Fachada 01', src:'assets/IMAGENS/Scene 01.png', thumb:'assets/thumbs/IMAGENS/Scene 01.jpg' },
+    { id:4, type:'image', category:'fachadas', title:'Fachada 02', src:'assets/IMAGENS/Scene 02.png', thumb:'assets/thumbs/IMAGENS/Scene 02.jpg' },
+    { id:5, type:'image', category:'fachadas', title:'Fachada 03', src:'assets/IMAGENS/Scene 03.png', thumb:'assets/thumbs/IMAGENS/Scene 03.jpg' },
+    { id:6, type:'image', category:'fachadas', title:'Fachada 04', src:'assets/IMAGENS/Scene 43.png', thumb:'assets/thumbs/IMAGENS/Scene 43.jpg' },
+
     // ═══ ÁREAS COMUNS ═══
-    { id:1, type:'image', category:'areas-comuns', title:'Áreas Comuns 01', src:'assets/IMAGENS/01.png', thumb:'assets/thumbs/IMAGENS/01.jpg' },
-    { id:2, type:'image', category:'areas-comuns', title:'Áreas Comuns 02', src:'assets/IMAGENS/02.png', thumb:'assets/thumbs/IMAGENS/02.jpg' },
-    { id:3, type:'image', category:'areas-comuns', title:'Áreas Comuns 03', src:'assets/IMAGENS/03.png', thumb:'assets/thumbs/IMAGENS/03.jpg' },
-    { id:4, type:'image', category:'areas-comuns', title:'Áreas Comuns 04', src:'assets/IMAGENS/04.png', thumb:'assets/thumbs/IMAGENS/04.jpg' },
-    { id:5, type:'image', category:'areas-comuns', title:'Áreas Comuns 05', src:'assets/IMAGENS/05.png', thumb:'assets/thumbs/IMAGENS/05.jpg' },
-    { id:6, type:'image', category:'areas-comuns', title:'Áreas Comuns 06', src:'assets/IMAGENS/06.png', thumb:'assets/thumbs/IMAGENS/06.jpg' },
-    { id:7, type:'image', category:'areas-comuns', title:'Áreas Comuns 08', src:'assets/IMAGENS/08.png', thumb:'assets/thumbs/IMAGENS/08.jpg' },
-    { id:8, type:'image', category:'areas-comuns', title:'Áreas Comuns 09', src:'assets/IMAGENS/09.png', thumb:'assets/thumbs/IMAGENS/09.jpg' },
-    { id:9, type:'image', category:'areas-comuns', title:'Áreas Comuns 10', src:'assets/IMAGENS/10.png', thumb:'assets/thumbs/IMAGENS/10.jpg' },
-    { id:10, type:'image', category:'areas-comuns', title:'Áreas Comuns 12', src:'assets/IMAGENS/12.png', thumb:'assets/thumbs/IMAGENS/12.jpg' },
-    { id:11, type:'image', category:'areas-comuns', title:'Áreas Comuns 13', src:'assets/IMAGENS/13.png', thumb:'assets/thumbs/IMAGENS/13.jpg' },
-    { id:12, type:'image', category:'areas-comuns', title:'Áreas Comuns 14', src:'assets/IMAGENS/14.png', thumb:'assets/thumbs/IMAGENS/14.jpg' },
-    { id:13, type:'image', category:'areas-comuns', title:'Áreas Comuns 15', src:'assets/IMAGENS/15.png', thumb:'assets/thumbs/IMAGENS/15.jpg' },
-    { id:14, type:'image', category:'areas-comuns', title:'Áreas Comuns 16', src:'assets/IMAGENS/16.png', thumb:'assets/thumbs/IMAGENS/16.jpg' },
-    { id:15, type:'image', category:'areas-comuns', title:'Áreas Comuns 17', src:'assets/IMAGENS/17.png', thumb:'assets/thumbs/IMAGENS/17.jpg' },
-    { id:16, type:'image', category:'areas-comuns', title:'Áreas Comuns 18', src:'assets/IMAGENS/18.png', thumb:'assets/thumbs/IMAGENS/18.jpg' },
-
-    // ═══ APARTAMENTO DECORADO ═══
-    { id:17, type:'image', category:'apartamento', title:'Sala de Estar', src:'assets/IMAGENS/Sala de estar.png', thumb:'assets/thumbs/IMAGENS/Sala de estar.jpg' },
-    { id:18, type:'image', category:'apartamento', title:'Sala de Jantar', src:'assets/IMAGENS/Sala de jantar.png', thumb:'assets/thumbs/IMAGENS/Sala de jantar.jpg' },
-    { id:19, type:'image', category:'apartamento', title:'Cozinha', src:'assets/IMAGENS/Cozinha.png', thumb:'assets/thumbs/IMAGENS/Cozinha.jpg' },
-    { id:20, type:'image', category:'apartamento', title:'Quarto 01', src:'assets/IMAGENS/Quarto 01.png', thumb:'assets/thumbs/IMAGENS/Quarto 01.jpg' },
-    { id:21, type:'image', category:'apartamento', title:'Quarto 02', src:'assets/IMAGENS/Quarto 02.png', thumb:'assets/thumbs/IMAGENS/Quarto 02.jpg' },
-    { id:22, type:'image', category:'apartamento', title:'Banheiro', src:'assets/IMAGENS/Banheiro.png', thumb:'assets/thumbs/IMAGENS/Banheiro.jpg' },
-
-    // ═══ PLANTAS ═══
-    { id:23, type:'image', category:'plantas', subCategory:'pl-apartamentos', isPlant:true, title:'Planta 3D', src:'assets/IMAGENS/PLANTA 3D.png', thumb:'assets/thumbs/IMAGENS/PLANTA 3D.jpg' },
+    { id:7, type:'image', category:'areas-comuns', title:'Áreas Comuns 01', src:'assets/IMAGENS/Scene 5.png', thumb:'assets/thumbs/IMAGENS/Scene 5.jpg' },
+    { id:8, type:'image', category:'areas-comuns', title:'Áreas Comuns 02', src:'assets/IMAGENS/Scene 6.png', thumb:'assets/thumbs/IMAGENS/Scene 6.jpg' },
+    { id:9, type:'image', category:'areas-comuns', title:'Áreas Comuns 03', src:'assets/IMAGENS/Scene 8.png', thumb:'assets/thumbs/IMAGENS/Scene 8.jpg' },
+    { id:10, type:'image', category:'areas-comuns', title:'Áreas Comuns 04', src:'assets/IMAGENS/Scene 9.png', thumb:'assets/thumbs/IMAGENS/Scene 9.jpg' },
+    { id:11, type:'image', category:'areas-comuns', title:'Áreas Comuns 05', src:'assets/IMAGENS/Scene 10.png', thumb:'assets/thumbs/IMAGENS/Scene 10.jpg' },
+    { id:12, type:'image', category:'areas-comuns', title:'Áreas Comuns 06', src:'assets/IMAGENS/Scene 11.png', thumb:'assets/thumbs/IMAGENS/Scene 11.jpg' },
+    { id:13, type:'image', category:'areas-comuns', title:'Áreas Comuns 07', src:'assets/IMAGENS/Scene 12.png', thumb:'assets/thumbs/IMAGENS/Scene 12.jpg' },
+    { id:14, type:'image', category:'areas-comuns', title:'Áreas Comuns 08', src:'assets/IMAGENS/Scene 13.png', thumb:'assets/thumbs/IMAGENS/Scene 13.jpg' },
+    { id:15, type:'image', category:'areas-comuns', title:'Áreas Comuns 09', src:'assets/IMAGENS/Scene 14.png', thumb:'assets/thumbs/IMAGENS/Scene 14.jpg' },
+    { id:16, type:'image', category:'areas-comuns', title:'Áreas Comuns 10', src:'assets/IMAGENS/Scene 15.png', thumb:'assets/thumbs/IMAGENS/Scene 15.jpg' },
+    { id:17, type:'image', category:'areas-comuns', title:'Áreas Comuns 11', src:'assets/IMAGENS/Scene 16.png', thumb:'assets/thumbs/IMAGENS/Scene 16.jpg' },
+    { id:18, type:'image', category:'areas-comuns', title:'Áreas Comuns 12', src:'assets/IMAGENS/Scene 17.png', thumb:'assets/thumbs/IMAGENS/Scene 17.jpg' },
+    { id:19, type:'image', category:'areas-comuns', title:'Áreas Comuns 13', src:'assets/IMAGENS/Scene 18.png', thumb:'assets/thumbs/IMAGENS/Scene 18.jpg' },
+    { id:20, type:'image', category:'areas-comuns', title:'Áreas Comuns 14', src:'assets/IMAGENS/Scene 20.png', thumb:'assets/thumbs/IMAGENS/Scene 20.jpg' },
+    { id:21, type:'image', category:'areas-comuns', title:'Áreas Comuns 15', src:'assets/IMAGENS/Scene 21.png', thumb:'assets/thumbs/IMAGENS/Scene 21.jpg' },
+    { id:22, type:'image', category:'areas-comuns', title:'Áreas Comuns 16', src:'assets/IMAGENS/Scene 22.png', thumb:'assets/thumbs/IMAGENS/Scene 22.jpg' },
+    { id:23, type:'image', category:'areas-comuns', title:'Áreas Comuns 17', src:'assets/IMAGENS/Scene 24.png', thumb:'assets/thumbs/IMAGENS/Scene 24.jpg' },
+    { id:24, type:'image', category:'areas-comuns', title:'Áreas Comuns 18', src:'assets/IMAGENS/Scene 25.png', thumb:'assets/thumbs/IMAGENS/Scene 25.jpg' },
+    { id:25, type:'image', category:'areas-comuns', title:'Áreas Comuns 19', src:'assets/IMAGENS/Scene 26.png', thumb:'assets/thumbs/IMAGENS/Scene 26.jpg' },
+    { id:26, type:'image', category:'areas-comuns', title:'Áreas Comuns 20', src:'assets/IMAGENS/Scene 27.png', thumb:'assets/thumbs/IMAGENS/Scene 27.jpg' },
+    { id:27, type:'image', category:'areas-comuns', title:'Áreas Comuns 21', src:'assets/IMAGENS/Scene 29.png', thumb:'assets/thumbs/IMAGENS/Scene 29.jpg' },
+    { id:28, type:'image', category:'areas-comuns', title:'Áreas Comuns 22', src:'assets/IMAGENS/Scene 30.png', thumb:'assets/thumbs/IMAGENS/Scene 30.jpg' },
+    { id:29, type:'image', category:'areas-comuns', title:'Áreas Comuns 23', src:'assets/IMAGENS/Scene 31.png', thumb:'assets/thumbs/IMAGENS/Scene 31.jpg' },
+    { id:30, type:'image', category:'areas-comuns', title:'Áreas Comuns 24', src:'assets/IMAGENS/Scene 32.png', thumb:'assets/thumbs/IMAGENS/Scene 32.jpg' },
+    { id:31, type:'image', category:'areas-comuns', title:'Áreas Comuns 25', src:'assets/IMAGENS/Scene 35.png', thumb:'assets/thumbs/IMAGENS/Scene 35.jpg' },
+    { id:32, type:'image', category:'areas-comuns', title:'Áreas Comuns 26', src:'assets/IMAGENS/Scene 36.png', thumb:'assets/thumbs/IMAGENS/Scene 36.jpg' },
+    { id:33, type:'image', category:'areas-comuns', title:'Áreas Comuns 27', src:'assets/IMAGENS/Scene 37.png', thumb:'assets/thumbs/IMAGENS/Scene 37.jpg' },
+    { id:34, type:'image', category:'areas-comuns', title:'Áreas Comuns 28', src:'assets/IMAGENS/Scene 38.png', thumb:'assets/thumbs/IMAGENS/Scene 38.jpg' },
+    { id:35, type:'image', category:'areas-comuns', title:'Áreas Comuns 29', src:'assets/IMAGENS/Scene 3.png', thumb:'assets/thumbs/IMAGENS/Scene 3.jpg' },
   ],
 };
 

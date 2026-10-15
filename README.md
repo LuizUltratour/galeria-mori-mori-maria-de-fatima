@@ -11,11 +11,11 @@ Galeria de imagens/plantas/vídeos para injeção via script no 3DVista, hospeda
 
 | Arquivo | URL |
 |---------|-----|
-| Galeria | `https://skylineip.s3.sa-east-1.amazonaws.com/Tour+Virtual/mori-mori/galeria-maria-de-fatima/index.html` |
-| Vídeos  | `https://skylineip.s3.sa-east-1.amazonaws.com/Tour+Virtual/mori-mori/galeria-maria-de-fatima/video-gallery.html` |
-| Script  | `https://skylineip.s3.sa-east-1.amazonaws.com/Tour+Virtual/mori-mori/galeria-maria-de-fatima/inject.js` |
+| Galeria | `https://skylineip.s3.sa-east-1.amazonaws.com/Tour+Virtual/mori-mori/galeria-miranda-de-castro/index.html` |
+| Vídeos  | `https://skylineip.s3.sa-east-1.amazonaws.com/Tour+Virtual/mori-mori/galeria-miranda-de-castro/video-gallery.html` |
+| Script  | `https://skylineip.s3.sa-east-1.amazonaws.com/Tour+Virtual/mori-mori/galeria-miranda-de-castro/inject.js` |
 
-**S3 path:** `s3://skylineip/Tour Virtual/mori-mori/galeria-maria-de-fatima/`
+**S3 path:** `s3://skylineip/Tour Virtual/mori-mori/galeria-miranda-de-castro/`
 
 ---
 
@@ -106,7 +106,7 @@ ignora `thumbs/`, `videos/` e o PDF.
 ### Sync completo
 
 ```bash
-aws s3 sync . "s3://skylineip/Tour Virtual/mori-mori/galeria-maria-de-fatima/" \
+aws s3 sync . "s3://skylineip/Tour Virtual/mori-mori/galeria-miranda-de-castro/" \
   --exclude ".git/*" --exclude ".claude/*" --exclude "*.py" \
   --exclude "README.md" --exclude ".gitattributes" --exclude "*.md" \
   --exclude "deploy.ps1" --exclude "*.pdf" \
@@ -116,10 +116,10 @@ aws s3 sync . "s3://skylineip/Tour Virtual/mori-mori/galeria-maria-de-fatima/" \
 ### Atualizar só index.html e inject.js
 
 ```bash
-aws s3 cp index.html "s3://skylineip/Tour Virtual/mori-mori/galeria-maria-de-fatima/index.html" \
+aws s3 cp index.html "s3://skylineip/Tour Virtual/mori-mori/galeria-miranda-de-castro/index.html" \
   --cache-control "no-cache,no-store,must-revalidate"
 
-aws s3 cp inject.js "s3://skylineip/Tour Virtual/mori-mori/galeria-maria-de-fatima/inject.js" \
+aws s3 cp inject.js "s3://skylineip/Tour Virtual/mori-mori/galeria-miranda-de-castro/inject.js" \
   --cache-control "no-cache,no-store,must-revalidate"
 ```
 
@@ -134,7 +134,7 @@ aws s3 cp inject.js "s3://skylineip/Tour Virtual/mori-mori/galeria-maria-de-fati
 ```js
 (function(){
   var s = document.createElement('script');
-  s.src = 'https://skylineip.s3.sa-east-1.amazonaws.com/Tour+Virtual/mori-mori/galeria-maria-de-fatima/inject.js?v=' + Date.now();
+  s.src = 'https://skylineip.s3.sa-east-1.amazonaws.com/Tour+Virtual/mori-mori/galeria-miranda-de-castro/inject.js?v=' + Date.now();
   document.head.appendChild(s);
 })();
 ```
