@@ -413,9 +413,9 @@ document.querySelectorAll('.vg-tab').forEach(btn => {
     document.getElementById('tab-' + tab).classList.add('active');
 
     // pausa os outros e toca o vídeo da aba ativa
-    heroes.forEach(v => { if (v.dataset.tab !== tab) v.pause(); });
+    heroes.forEach(v => { if (v.dataset.tab !== tab) { v.pause(); v.currentTime = 0; } });
     const h = heroFor(tab);
-    if (h) h.play().catch(() => {});
+    if (h) { h.currentTime = 0; h.muted = false; h.play().catch(() => {}); }
   });
 });
 
