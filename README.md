@@ -155,6 +155,18 @@ GaleriaPlantas(1);
 
 // Fecha galeria de plantas
 GaleriaPlantas(0);
+
+// Abre galeria de vídeos (abas: Exterior e Interior Apto 01)
+AbrirGaleriaVideos(1);
+
+// Fecha galeria de vídeos
+AbrirGaleriaVideos(0);
+
+// Abre diferenciais
+AbrirDiferenciais(1);
+
+// Fecha diferenciais
+AbrirDiferenciais(0);
 ```
 
 ---
@@ -173,3 +185,21 @@ Tema **verde imersivo** do Mori Mori — Ryokan:
 | Fonte UI | Inter | — |
 
 > Plantas técnicas mantêm **fundo claro** no card (`#EAFFF7`, para legibilidade do desenho), com texto verde-escuro (`#325825`) — a mesma dupla primária/secundária, com os papéis invertidos.
+
+---
+
+## Vídeos
+
+Os vídeos ficam em `assets/videos/` (fora do git, só no S3), em 1080p H.264 com `faststart`:
+
+| Aba | Arquivo |
+|-----|---------|
+| Exterior | `assets/videos/exterior.mp4` |
+| Interior Apto 01 | `assets/videos/interior-apto-01.mp4` |
+
+Originais 4K em `assets/VIDEO/` (não versionados nem enviados ao S3). Para gerar a versão web:
+
+```bash
+ffmpeg -i original.mp4 -vf scale=-2:1080 -c:v libx264 -preset medium -crf 23 -maxrate 8M -bufsize 16M \
+  -pix_fmt yuv420p -c:a aac -b:a 128k -movflags +faststart assets/videos/nome.mp4
+```
