@@ -85,6 +85,9 @@
       box-shadow: 0 3px 12px rgba(229,125,67,0.35);
     }
 
+    /* ── Abas: pressed/ativo = fundo branco, fonte #325825 ── */
+    .vg-tab:active, .vg-tab.active { background: #FFFFFF; color: #325825; box-shadow: none; }
+
     #btn-close {
       width: 36px; height: 36px;
       border: 1px solid var(--border-strong);
@@ -379,7 +382,7 @@
   <div id="tab-exterior" class="tab-panel active" role="tabpanel">
     <video class="hero-player" data-tab="exterior"
            src="assets/videos/exterior.mp4"
-           autoplay muted playsinline controls
+           autoplay playsinline controls
            preload="auto">
     </video>
   </div>
@@ -388,7 +391,7 @@
   <div id="tab-interior" class="tab-panel" role="tabpanel">
     <video class="hero-player" data-tab="interior"
            src="assets/videos/interior-apto-01.mp4"
-           muted playsinline controls
+           playsinline controls
            preload="metadata">
     </video>
   </div>
@@ -415,6 +418,22 @@ document.querySelectorAll('.vg-tab').forEach(btn => {
     if (h) h.play().catch(() => {});
   });
 });
+
+// ── som habilitado ao iniciar ───────────────────────────────────
+// Tenta tocar com som; se o navegador bloquear o autoplay, toca mudo e
+// ativa o som no primeiro toque/clique do usuário.
+(function () {
+  const h = heroFor('exterior');
+  if (!h) return;
+  h.muted = false;
+  h.play().catch(() => {
+    h.muted = true;
+    h.play().catch(() => {});
+    const unmute = () => { h.muted = false; };
+    ['pointerdown', 'keydown', 'touchstart'].forEach(ev =>
+      window.addEventListener(ev, unmute, { once: true, passive: true }));
+  });
+})();
 
 // ── fechar ──────────────────────────────────────────────────────
 document.getElementById('btn-close').addEventListener('click', closeGallery);
