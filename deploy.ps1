@@ -43,7 +43,7 @@ else {
   aws s3 sync . "$Bucket/" `
     --exclude ".git/*" --exclude ".claude/*" --exclude "*.py" --exclude "*.ps1" `
     --exclude "README.md" --exclude ".gitattributes" --exclude "*.md" `
-    --exclude "*.pdf" --exclude "Thumbs.db" --exclude "*/Thumbs.db" `
+    --exclude "*.pdf" --exclude "assets/VIDEO/*" --exclude "Thumbs.db" --exclude "*/Thumbs.db" `
     --delete
 
   # HTML/JS precisam de cache-control para o 3DVista nunca servir versao cacheada

@@ -106,9 +106,9 @@
     }
     .tab-panel.active { display: flex; flex-direction: column; }
 
-    /* ── HERO (institucional + conceito) ── */
-    #tab-institucional,
-    #tab-conceito {
+    /* ── HERO (exterior + interior) ── */
+    #tab-exterior,
+    #tab-interior {
       background: #000;
       align-items: center;
       justify-content: center;
@@ -368,26 +368,26 @@
 <div id="vg-root">
   <header id="vg-header">
     <div id="vg-tabs" role="tablist">
-      <button class="vg-tab active" data-tab="institucional" role="tab">Institucional</button>
-      <button class="vg-tab"       data-tab="conceito"      role="tab">Conceito</button>
+      <button class="vg-tab active" data-tab="exterior" role="tab">Exterior</button>
+      <button class="vg-tab"       data-tab="interior"      role="tab">Interior Apto 01</button>
     </div>
 
     <button id="btn-close" title="Fechar" aria-label="Fechar"></button>
   </header>
 
-  <!-- Tab: Institucional -->
-  <div id="tab-institucional" class="tab-panel active" role="tabpanel">
-    <video class="hero-player" data-tab="institucional"
-           src="assets/videos/legacy-video-3.mp4"
+  <!-- Tab: Exterior -->
+  <div id="tab-exterior" class="tab-panel active" role="tabpanel">
+    <video class="hero-player" data-tab="exterior"
+           src="assets/videos/exterior.mp4"
            autoplay muted playsinline controls
            preload="auto">
     </video>
   </div>
 
-  <!-- Tab: Conceito -->
-  <div id="tab-conceito" class="tab-panel" role="tabpanel">
-    <video class="hero-player" data-tab="conceito"
-           src="assets/videos/conceito-01.mp4"
+  <!-- Tab: Interior -->
+  <div id="tab-interior" class="tab-panel" role="tabpanel">
+    <video class="hero-player" data-tab="interior"
+           src="assets/videos/interior-apto-01.mp4"
            muted playsinline controls
            preload="metadata">
     </video>
@@ -395,7 +395,7 @@
 </div>
 
 <script>
-// ── abas: dois vídeos hero (Institucional + Conceito) ───────────
+// ── abas: dois vídeos hero (Exterior + Interior) ───────────
 const heroes = Array.from(document.querySelectorAll('.hero-player'));
 const heroFor = tab => heroes.find(v => v.dataset.tab === tab);
 
